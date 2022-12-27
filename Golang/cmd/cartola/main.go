@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"database/sql"
-	"github.com/devfullcycle/imersao10-consolidacao/pkg/uow"
+	"github.com/CassiusThalles/fullcycle11_cartolafc/tree/main/Golang/pkg/uow"
 )
 
 func main() {

@@ -3,9 +3,9 @@ package usecase
 import (
 	"context"
 
-	"github.com/devfullcycle/imersao10-consolidacao/internal/domain/entity"
-	"github.com/devfullcycle/imersao10-consolidacao/internal/domain/repository"
-	"github.com/devfullcycle/imersao10-consolidacao/pkg/uow"
+	"github.com/CassiusThalles/fullcycle11_cartolafc/tree/main/Golang/internal/domain/entity"
+	"github.com/CassiusThalles/fullcycle11_cartolafc/tree/main/Golang/internal/domain/repository"
+	"github.com/CassiusThalles/fullcycle11_cartolafc/tree/main/Golang/pkg/uow"
 )
 
 type AddMyTeamInput struct {

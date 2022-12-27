@@ -4,8 +4,8 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/devfullcycle/imersao10-consolidacao/internal/domain/entity"
-	"github.com/devfullcycle/imersao10-consolidacao/internal/infra/db"
+	"github.com/CassiusThalles/fullcycle11_cartolafc/tree/main/Golang/internal/domain/entity"
+	"github.com/CassiusThalles/fullcycle11_cartolafc/tree/main/Golang/internal/infra/db"
 )
 
 type PlayerRepository struct {
