@@ -3,7 +3,7 @@ package repository
 import (
 	"errors"
 
-	"github.com/CassiusThalles/fullcycle11_cartolafc/tree/main/Golang/internal/infra/db"
+	"mygolangappinternal/infra/db"
 )
 
 var ErrQueriesNotSet = errors.New("queries not set")

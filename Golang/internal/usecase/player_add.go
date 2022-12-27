@@ -2,8 +2,8 @@ package usecase
 
 import (
 	"context"
-	"github.com/CassiusThalles/fullcycle11_cartolafc/tree/main/Golang/internal/domain/repository"
-	"github.com/CassiusThalles/fullcycle11_cartolafc/tree/main/Golang/pkg/uow"
+	"mygolangappinternal/domain/repository"
+	"mygolangapppkg/uow"
 )
 
 type AddPlayerInput struct {

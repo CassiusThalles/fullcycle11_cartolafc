@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/CassiusThalles/fullcycle11_cartolafc/tree/main/Golang/internal/infra/db"
+	"mygolangappinternal/infra/db"
 )
 
 func ListPlayersHandler(ctx context.Context, queris db.Queries) http.HandlerFunc {

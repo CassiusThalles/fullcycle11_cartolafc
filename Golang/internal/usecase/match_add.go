@@ -4,9 +4,9 @@ import (
 	"context"
 	"time"
 
-	"github.com/CassiusThalles/fullcycle11_cartolafc/tree/main/Golang/internal/domain/entity"
-	"github.com/CassiusThalles/fullcycle11_cartolafc/tree/main/Golang/internal/domain/repository"
-	"github.com/CassiusThalles/fullcycle11_cartolafc/tree/main/Golang/pkg/uow"
+	"mygolangappinternal/domain/entity"
+	"mygolangappinternal/domain/repository"
+	"mygolangapppkg/uow"
 )
 
 type MatchInput struct {

@@ -3,9 +3,9 @@ package usecase
 import (
 	"context"
 
-	"github.com/CassiusThalles/fullcycle11_cartolafc/tree/main/Golang/internal/domain/repository"
-	"github.com/CassiusThalles/fullcycle11_cartolafc/tree/main/Golang/internal/domain/service"
-	"github.com/CassiusThalles/fullcycle11_cartolafc/tree/main/Golang/pkg/uow"
+	"mygolangappinternal/domain/repository"
+	"mygolangappinternal/domain/service"
+	"mygolangapppkg/uow"
 )
 
 type MyTeamChoosePlayerInput struct {
