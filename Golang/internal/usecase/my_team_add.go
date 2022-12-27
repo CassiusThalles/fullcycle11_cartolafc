@@ -3,14 +3,14 @@ package usecase
 import (
 	"context"
 
-	"mygolangappinternal/domain/entity"
-	"mygolangappinternal/domain/repository"
-	"mygolangapppkg/uow"
+	"mygolangapp/internal/domain/entity"
+	"mygolangapp/internal/domain/repository"
+	"mygolangapp/pkg/uow"
 )
 
 type AddMyTeamInput struct {
-	ID string
-	Name string
+	ID    string
+	Name  string
 	Score int
 }
 

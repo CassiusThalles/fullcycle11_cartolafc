@@ -4,16 +4,16 @@ import (
 	"context"
 	"time"
 
-	"mygolangappinternal/domain/entity"
-	"mygolangappinternal/domain/repository"
-	"mygolangapppkg/uow"
+	"mygolangapp/internal/domain/entity"
+	"mygolangapp/internal/domain/repository"
+	"mygolangapp/pkg/uow"
 )
 
 type MatchInput struct {
-	ID string `json:"id"`
-	Date time.Time `json:"match_date"`
-	TeamAID string `json:"team_a_id"`
-	TeamBID string `json:"team_b_id"`
+	ID      string    `json:"id"`
+	Date    time.Time `json:"match_date"`
+	TeamAID string    `json:"team_a_id"`
+	TeamBID string    `json:"team_b_id"`
 }
 
 type MatchUseCase struct {
@@ -22,7 +22,7 @@ type MatchUseCase struct {
 
 func NewMatchUseCase(uow uow.UowInterface) *MatchUseCase {
 	return &MatchUseCase{
-		Uow: uow
+		Uow: uow,
 	}
 }
 
@@ -35,7 +35,6 @@ func (u *MatchUseCase) Execute(ctx context.Context, input MatchInput) error {
 		if err != nil {
 			return err
 		}
-
 		teamB, err := teamRepository.FindByID(ctx, input.TeamBID)
 		if err != nil {
 			return err
@@ -43,6 +42,7 @@ func (u *MatchUseCase) Execute(ctx context.Context, input MatchInput) error {
 
 		match := entity.NewMatch(input.ID, teamA, teamB, input.Date)
 
+		// Create match
 		err = matchRepository.Create(ctx, match)
 		if err != nil {
 			return err

@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 
-	"mygolangappinternal/infra/db"
+	"mygolangapp/internal/infra/db"
 )
 
 func ListPlayersHandler(ctx context.Context, queris db.Queries) http.HandlerFunc {

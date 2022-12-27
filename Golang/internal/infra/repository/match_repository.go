@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"mygolangappinternal/domain/entity"
-	"mygolangappinternal/infra/db"
+	"mygolangapp/internal/domain/entity"
+	"mygolangapp/internal/infra/db"
 )
 
 type MatchRepository struct {

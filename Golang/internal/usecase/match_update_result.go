@@ -5,13 +5,13 @@ import (
 	"strconv"
 	"strings"
 
-	"mygolangappinternal/domain/entity"
-	"mygolangappinternal/domain/repository"
-	"mygolangapppkg/uow"
+	"mygolangapp/internal/domain/entity"
+	"mygolangapp/internal/domain/repository"
+	"mygolangapp/pkg/uow"
 )
 
 type MatchUpdateResultInput struct {
-	ID string `json:"match_id"`
+	ID     string `json:"match_id"`
 	Result string `json:"result"`
 }
 
@@ -20,9 +20,9 @@ type MatchUpdateResultUseCase struct {
 }
 
 func NewMatchUpdateResultUseCase(uow uow.UowInterface) *MatchUpdateResultUseCase {
-	return &MatchUpdateResultUseCase(
-		Uow: uow
-	)
+	return &MatchUpdateResultUseCase{
+		Uow: uow,
+	}
 }
 
 func (u *MatchUpdateResultUseCase) Execute(ctx context.Context, input MatchUpdateResultInput) error {
@@ -33,9 +33,10 @@ func (u *MatchUpdateResultUseCase) Execute(ctx context.Context, input MatchUpdat
 			return err
 		}
 		matchResult := strings.Split(input.Result, "-")
+		// convert results to int
 		teamAResult, _ := strconv.Atoi(matchResult[0])
 		teamBResult, _ := strconv.Atoi(matchResult[1])
-		match.Result = *entity;NewMatchResult(teamAResult, teamBResult)
+		match.Result = *entity.NewMatchResult(teamAResult, teamBResult)
 		err = matchRepo.Update(ctx, match)
 		if err != nil {
 			return err
@@ -45,10 +46,10 @@ func (u *MatchUpdateResultUseCase) Execute(ctx context.Context, input MatchUpdat
 	return err
 }
 
-func (u *MatchUpdateResultUseCase) getMatchRepository(ctx, context.Context) repository.MatchRepositoryInterface {
+func (u *MatchUpdateResultUseCase) getMatchRepository(ctx context.Context) repository.MatchRepositoryInterface {
 	matchRepository, err := u.Uow.GetRepository(ctx, "MatchRepository")
 	if err != nil {
-		panix(err)
+		panic(err)
 	}
 	return matchRepository.(repository.MatchRepositoryInterface)
 }

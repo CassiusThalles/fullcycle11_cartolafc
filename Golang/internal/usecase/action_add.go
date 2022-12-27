@@ -5,33 +5,34 @@ import (
 	"errors"
 	"fmt"
 
-	"mygolangappinternal/domain/entity"
-	"mygolangappinternal/domain/repository"
-	"mygolangapppkg/uow"
+	"mygolangapp/internal/domain/entity"
+	"mygolangapp/internal/domain/repository"
+	"mygolangapp/pkg/uow"
 )
 
 var errActionNotFound = errors.New("action not found")
 
 type ActionAddInput struct {
-	MatchID string `json:"match_id"`
-	TeamID string `json:"team_id"`
+	MatchID  string `json:"match_id"`
+	TeamID   string `json:"team_id"`
 	PlayerID string `json:"player_id"`
-	Minute int `json:"minutes"`
-	Action string `json:"action"`
+	Minute   int    `json:"minutes"`
+	Action   string `json:"action"`
 }
 
 type ActionAddUseCase struct {
-	Uow uow.UowInterface
+	Uow         uow.UowInterface
 	ActionTable entity.ActionTableInterface
 }
 
 func NewActionAddUseCase(uow uow.UowInterface, actionTable entity.ActionTableInterface) *ActionAddUseCase {
 	return &ActionAddUseCase{
-		Uow: uow,
-		ActionTable: actionTable
+		Uow:         uow,
+		ActionTable: actionTable,
 	}
 }
 
+// execute
 func (a *ActionAddUseCase) Execute(ctx context.Context, input ActionAddInput) error {
 	err := a.Uow.Do(ctx, func(_ *uow.Uow) error {
 		matchRepo := a.getMatchRepository(ctx)
@@ -42,6 +43,7 @@ func (a *ActionAddUseCase) Execute(ctx context.Context, input ActionAddInput) er
 		if err != nil {
 			return err
 		}
+		// fmt.Printf("match: %v", match)
 
 		score, err := a.ActionTable.GetScore(input.Action)
 		if err != nil {
@@ -51,7 +53,7 @@ func (a *ActionAddUseCase) Execute(ctx context.Context, input ActionAddInput) er
 		match.Actions = append(match.Actions, *theAction)
 		fmt.Println("match.Actions: ", theAction)
 
-		err := matchRepo.SaveActions(ctx, match, float64(score))
+		err = matchRepo.SaveActions(ctx, match, float64(score))
 		if err != nil {
 			return err
 		}
@@ -88,15 +90,15 @@ func (a *ActionAddUseCase) getMatchRepository(ctx context.Context) repository.Ma
 	return matchRepository.(repository.MatchRepositoryInterface)
 }
 
-func (a *ActionAddUseCase) getMyTeamRepository(ctx) repository.MyTeamRepositoryInterface {
+func (a *ActionAddUseCase) getMyTeamRepository(ctx context.Context) repository.MyTeamRepositoryInterface {
 	myTeamRepository, err := a.Uow.GetRepository(ctx, "MyTeamRepository")
 	if err != nil {
 		panic(err)
 	}
-	return myTeamRepository.(entity.MyTeamRepositoryInterface)
+	return myTeamRepository.(repository.MyTeamRepositoryInterface)
 }
 
-func (a *ActionAddUseCase) getPlayerRepository(ctx) repository.PlayerRepositoryInterface {
+func (a *ActionAddUseCase) getPlayerRepository(ctx context.Context) repository.PlayerRepositoryInterface {
 	playerRepository, err := a.Uow.GetRepository(ctx, "PlayerRepository")
 	if err != nil {
 		panic(err)

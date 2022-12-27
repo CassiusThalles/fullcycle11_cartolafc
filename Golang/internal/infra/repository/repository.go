@@ -3,7 +3,7 @@ package repository
 import (
 	"errors"
 
-	"mygolangappinternal/infra/db"
+	"mygolangapp/internal/infra/db"
 )
 
 var ErrQueriesNotSet = errors.New("queries not set")

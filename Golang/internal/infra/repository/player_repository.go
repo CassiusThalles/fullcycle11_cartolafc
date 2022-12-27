@@ -4,8 +4,8 @@ import (
 	"context"
 	"database/sql"
 
-	"mygolangappinternal/domain/entity"
-	"mygolangappinternal/infra/db"
+	"mygolangapp/internal/domain/entity"
+	"mygolangapp/internal/infra/db"
 )
 
 type PlayerRepository struct {

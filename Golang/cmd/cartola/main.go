@@ -3,12 +3,18 @@ package main
 import (
 	"context"
 	"database/sql"
-	"mygolangapppkg/uow"
+	"net/http"
+	"mygolangapp/pkg/uow"
+	"mygolangapp/internal/infra/repository"
+	"mygolangapp/internal/infra/db"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func main() {
 	ctx := context.Background()
-	dtb, err := sql.Open("mysql", "root:root@tcp(localhost:3306)/cartola?parseTime=true")
+	dtb, err := sql.Open("mysql", "root:root@tcp(mysql:3307)/cartola?parseTime=true")
+
 	if err != nil {
 		panic(err)
 	}
@@ -18,8 +24,10 @@ func main() {
 		panic(err)
 	}
 	registerRepositories(uow)
-	
-	http.ListenAndServe("8080", nil)
+
+	if err = http.ListenAndServe(":8080", nil); err != nil {
+		panic(err)
+	}
 }
 
 func registerRepositories(uow *uow.Uow) {
