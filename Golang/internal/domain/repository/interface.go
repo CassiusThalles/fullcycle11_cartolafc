@@ -3,7 +3,7 @@ package repository
 import (
 	"context"
 
-	"githib.com/CassiusThalles/imersao10-consolidacao/internal/domain/entity"
+	"mygolangapp/internal/domain/entity"
 )
 
 type MyTeamRepositoryInterface interface {

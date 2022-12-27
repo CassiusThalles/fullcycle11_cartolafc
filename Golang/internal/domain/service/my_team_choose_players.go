@@ -3,7 +3,7 @@ package service
 import (
 	"errors"
 	
-	"githib.com/CassiusThalles/imersao10-consolidacao/internal/domain/entity"
+	"mygolangapp/internal/domain/entity"
 )
 
 func ChoosePlayers(myTeam *entity.MyTeam, players []entity.Player) error {
