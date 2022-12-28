@@ -10,4 +10,4 @@ python -m pipenv run python manage.py migrate
 
 python -m pipenv run python manage.py loaddata initial_data
 
-tail -f /dev/null
+python -m pipenv run python manage.py runserver 0.0.0.0:8000

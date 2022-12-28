@@ -26,7 +26,7 @@ def get_old_match(sender, instance: Match, **kwargs):
 
 @receiver(post_save, sender=Match)
 def pulish_new_match_result(sender, instance: Match, created: bool, **kwargs):
-    if not created and instance._pre_save_instance.team_a_goal != instance.team_a_goal or instance._pre_save_instance.team_b_goal != instance.team_b_goal:
+    if not created and instance._pre_save_instance and (instance._pre_save_instance.team_a_goal != instance.team_a_goal or instance._pre_save_instance.team_b_goal != instance.team_b_goal):
         print('Match result published')
 
 @receiver(post_save, sender=Action)
