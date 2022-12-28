@@ -1,1 +1,5 @@
 **/sql_data
+**/.venv
+**/.env
+**/.devcontainer
+**/db.sqlite3

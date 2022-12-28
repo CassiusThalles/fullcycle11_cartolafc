@@ -1,0 +1,133 @@
+[
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$390000$GyXCFrRuPPBDtFqybj0aCU$xo0R+MISrdVb5GXJlCiS0dwbu4oafGNnWAgvmMFxodc=",
+            "last_login": "2022-12-28T17:08:36.172Z",
+            "is_superuser": true,
+            "username": "admin@user.com",
+            "first_name": "",
+            "last_name": "",
+            "email": "admin@user.com",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2022-12-28T01:46:51.841Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "app.player",
+        "pk": 1,
+        "fields": {
+            "name": "Neymar",
+            "initial_price": 10.0
+        }
+    },
+    {
+        "model": "app.player",
+        "pk": 2,
+        "fields": {
+            "name": "Messi",
+            "initial_price": 9.0
+        }
+    },
+    {
+        "model": "app.player",
+        "pk": 3,
+        "fields": {
+            "name": "Cristiano Ronaldo",
+            "initial_price": 13.0
+        }
+    },
+    {
+        "model": "app.team",
+        "pk": 1,
+        "fields": {
+            "name": "Brasil"
+        }
+    },
+    {
+        "model": "app.team",
+        "pk": 2,
+        "fields": {
+            "name": "Argentina"
+        }
+    },
+    {
+        "model": "app.team",
+        "pk": 3,
+        "fields": {
+            "name": "Alemanha"
+        }
+    },
+    {
+        "model": "app.team",
+        "pk": 4,
+        "fields": {
+            "name": "Japão"
+        }
+    },
+    {
+        "model": "app.team",
+        "pk": 5,
+        "fields": {
+            "name": "Portugal"
+        }
+    },
+    {
+        "model": "app.myteam",
+        "pk": 1,
+        "fields": {
+            "players": [
+                1,
+                2
+            ]
+        }
+    },
+    {
+        "model": "app.match",
+        "pk": 1,
+        "fields": {
+            "match_date": "2022-12-28T15:27:04Z",
+            "team_a": 1,
+            "team_a_goal": 1,
+            "team_b": 2,
+            "team_b_goal": 0
+        }
+    },
+    {
+        "model": "app.action",
+        "pk": 1,
+        "fields": {
+            "player": 1,
+            "team": 1,
+            "minute": 10,
+            "match": 1,
+            "action": "goal"
+        }
+    },
+    {
+        "model": "app.action",
+        "pk": 2,
+        "fields": {
+            "player": 2,
+            "team": 2,
+            "minute": 11,
+            "match": 1,
+            "action": "assist"
+        }
+    },
+    {
+        "model": "app.action",
+        "pk": 3,
+        "fields": {
+            "player": 1,
+            "team": 1,
+            "minute": 19,
+            "match": 1,
+            "action": "goal"
+        }
+    }
+]
