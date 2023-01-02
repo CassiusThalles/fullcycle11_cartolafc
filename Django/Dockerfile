@@ -1,11 +1,6 @@
 FROM python:3.10.2-slim
 
 RUN useradd -ms /bin/bash python
-# RUN cp .env.example .env 
-# RUN pip install pipenv 
-# RUN pipenv install 
-# RUN pipenv run python manage.py migrate 
-# RUN pipenv run python manage.py loaddata initial_data 
 
 USER python
 

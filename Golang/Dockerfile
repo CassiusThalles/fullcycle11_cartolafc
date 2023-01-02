@@ -1,13 +1,17 @@
 FROM golang:latest
 
-WORKDIR /home/
+WORKDIR /go/home
 
-COPY . /home/
+COPY . /go/home/
 
-RUN apt-get update &&\
-    apt-get install -y librdkafka-dev &&\
-    go mod download
+RUN apt-get update
+RUN apt-get install -y librdkafka-dev
+RUN go install github.com/kyleconroy/sqlc/cmd/sqlc@latest
+RUN go install -tags 'mysql' github.com/golang-migrate/migrate/v4/cmd/migrate@v4.15.2
+
+RUN go mod download
 
 EXPOSE 8080
 
-CMD [ "go", "run", "cmd/cartola/main.go" ]
+CMD [ "./.docker/start.dev.sh" ]
+# CMD ["tail", "-f", "/dev/null"]

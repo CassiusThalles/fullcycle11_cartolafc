@@ -14,6 +14,7 @@ import (
 	"github.com/confluentinc/confluent-kafka-go/kafka"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
 )
 
 func main() {
@@ -31,6 +32,7 @@ func main() {
 	registerRepositories(uow)
 
 	r := chi.NewRouter()
+	r.Use(middleware.Logger)
 	r.Get("/players", httphandler.ListPlayersHandler(ctx, *db.New(dtb)))
 	r.Get("/my-teams/{teamID}/players", httphandler.ListMyTeamPlayersHandler(ctx, *db.New(dtb)))
 	r.Get("/my-teams/{teamID}/balance", httphandler.GetMyTeamBalanceHandler(ctx, *db.New(dtb)))
